@@ -2,15 +2,13 @@
 
 A News App in Flutter.
 
-## Getting Started
+## Information
 
-This project is a starting point for a Flutter application.
+This application utilizes the Developer Plan of the News API. You can get your API key [here](https://newsapi.org/).
 
-A few resources to get you started if this is your first Flutter project:
+## Instructions
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+By default the Api Key is stored in a .env file. It's necessary to create the file in the root of application with the following content:
+```dotenv
+   API_KEY = 'XXXXXXXXXXXXXXXXX'
+   ```

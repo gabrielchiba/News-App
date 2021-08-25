@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article.dart';
 import 'package:news_app/services/api_service.dart';
+import 'package:news_app/components/article_list_tile.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async{
+  await dotenv.load(fileName: ".env");
   runApp(MyApp());
 }
 
@@ -10,11 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter News App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'News App'),
     );
   }
 }
@@ -37,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        brightness: Brightness.dark,
       ),
       body: FutureBuilder(
         future: client.getArticle(),
@@ -45,10 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
             List<Article>? articles = snapshot.data;
             return ListView.builder(
                 itemCount: articles!.length,
-                itemBuilder: (context, index) => ListTile(
-                    title: Text(
-                        articles[index].title)
-                ),
+                itemBuilder: (context, index) =>
+                    articleListTile(articles[index]),
             );
           }
           return Center(
@@ -58,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: ()=>null,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        tooltip: 'Set Notification',
+        child: Icon(Icons.notifications),
       ),
     );
   }

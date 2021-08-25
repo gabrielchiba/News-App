@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:news_app/models/article.dart';
 
@@ -11,7 +12,7 @@ class ApiService {
     final queryParameters = {
       'country': 'us',
       'category': 'technology',
-      'apiKey': 'd2c24f164184423eaa4cd6648141b1b9'
+      'apiKey': dotenv.env['API_KEY'],
     };
     final uri = Uri.https(endPointUrl, '/v2/top-headlines', queryParameters);
     print("URL: $uri");
