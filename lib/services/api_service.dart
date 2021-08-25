@@ -19,7 +19,6 @@ class ApiService {
     Map<String, dynamic> json = jsonDecode(response.body);
     List body = json['articles'];
     List<Article> articles = body.map((item) => Article.fromJson(item)).toList();
-    print(body);
     return articles;
   }
 }
