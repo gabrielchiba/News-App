@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/models/article.dart';
-import 'package:news_app/services/api_service.dart';
+import 'package:news_app/src/models/article.dart';
+import 'package:news_app/src/services/api_service.dart';
 
 class TopHeadlinesNotifier with ChangeNotifier {
   List<Article> _articleList = [];

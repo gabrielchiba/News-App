@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/models/article.dart';
+import 'package:news_app/src/constants/colors.dart';
+import 'package:news_app/src/models/article.dart';
 
 Widget articleListTile(Article article) {
   return Container(
@@ -33,9 +34,7 @@ Widget articleListTile(Article article) {
           height: 200.0,
           width: double.infinity,
           decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/placeholder.png'),
-                fit: BoxFit.cover),
+            color: Colors.grey,
             borderRadius: BorderRadius.circular(12.0),
           ),
         ),
@@ -43,7 +42,7 @@ Widget articleListTile(Article article) {
         Container(
           padding: EdgeInsets.all(6.0),
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: customDarkBlue,
             borderRadius: BorderRadius.circular(30.0),
           ),
           child: Text(
@@ -58,7 +57,7 @@ Widget articleListTile(Article article) {
           article.title,
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 16.0,
+            fontSize: 18.0,
           ),
         )
       ],

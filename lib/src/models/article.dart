@@ -1,4 +1,4 @@
-import 'package:news_app/models/source.dart';
+import 'package:news_app/src/models/source.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'article.g.dart';
