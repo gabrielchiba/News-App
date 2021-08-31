@@ -5,6 +5,7 @@ import 'package:news_app/src/components/article_list_tile.dart';
 import 'package:news_app/src/constants/colors.dart';
 import 'package:news_app/src/models/article.dart';
 import 'package:news_app/src/services/api_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key, required this.title}) : super(key: key);
@@ -38,6 +39,19 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  Future<void> _launchInWebView(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        // enableJavaScript: true,
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   ApiService client = ApiService();
@@ -96,8 +110,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           return SizedBox(
             child: ListView.builder(
               itemCount: articles!.length,
-              itemBuilder: (context, index) =>
-                  articleListTile(articles[index]),
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  child: articleListTile(articles[index]),
+                  onTap: () => _launchInWebView(articles[index].url),
+                );
+              },
             ),
           );
         }
